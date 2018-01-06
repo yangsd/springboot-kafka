@@ -2,10 +2,14 @@ package com.task;
 
 import com.service.ProduceService;
 import com.vo.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -15,6 +19,8 @@ import java.util.Random;
 @Component
 public class ProduceTask {
 
+    private static Logger logger = LoggerFactory.getLogger(ProduceTask.class);
+
     @Autowired
     private ProduceService produceService;
 
@@ -23,9 +29,14 @@ public class ProduceTask {
         for (int i = 0; i < 500; i++) {
             Message message = new Message();
             message.setTopic("mytopic");
-            message.setKey(new Random() + "");
-            message.setValue(new Random().nextInt(1000) + "");
+            message.setValue(this.getNow() + new Random().nextInt(2000));
             produceService.send(message);
         }
+    }
+
+    public String getNow(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        return format.format(date);
     }
 }

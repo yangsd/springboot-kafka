@@ -1,6 +1,6 @@
 package com.service;
 
-import com.vo.Message;
+import com.dto.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

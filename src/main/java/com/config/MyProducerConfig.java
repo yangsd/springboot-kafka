@@ -42,6 +42,11 @@ public class MyProducerConfig {
         props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, bufferMemory);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+
+        //-Djava.security.auth.login.config=
+        System.setProperty("java.security.auth.login.config", "D:\\kafka_2.12-1.0.0\\config\\kafka_client_jaas.conf");
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("sasl.mechanism", "PLAIN");
         return props;
     }
 

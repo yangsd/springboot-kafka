@@ -28,7 +28,7 @@ public class ProduceTask {
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void sendMessage1() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5000; i++) {
             Message message = new Message();
             message.setTopic(topic);
             message.setValue(DateUtil.getNow() + new Random().nextInt(2000));
@@ -38,7 +38,7 @@ public class ProduceTask {
 
     @Scheduled(cron = "0/3 * * * * ?")
     public void sendMessage2() {
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 10000; i++) {
             Message message = new Message();
             message.setTopic(topic);
             message.setValue(DateUtil.getNow() + new Random().nextInt(2000));

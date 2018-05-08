@@ -72,6 +72,9 @@ public class MyConsumerConfig {
         propsMap.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);//groupId
         propsMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
         propsMap.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, maxPollRecords);//每一批消费最大的数量
+        System.setProperty("java.security.auth.login.config", "D:\\kafka_2.12-1.0.0\\config\\kafka_client_jaas.conf");
+        propsMap.put("security.protocol", "SASL_PLAINTEXT");
+        propsMap.put("sasl.mechanism", "PLAIN");
         return propsMap;
     }
 
